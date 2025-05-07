@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>  
+    
+<head>
+    <script src="https://kit.fontawesome.com/c261e379d7.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body style="background-color: rgb(50, 77, 136);">
+<h1 style="font-size: 50px; color: goldenrod; text-align: center;">Flying spaghetti monsters throw spaghetti</h1>
+
+<section style="display: flex; justify-content: center;">
+    <i onclick="changeColor('black')" style="font-size: 50px; color: black ;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('red')" style="font-size: 50px; color: red;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('orange')" style="font-size: 50px; color: orange;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('yellow')" style="font-size: 50px; color: yellow;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('green')" style="font-size: 50px; color: green;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('blue')" style="font-size: 50px; color: blue;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('cyan')" style="font-size: 50px; color: cyan;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('white')" style="font-size: 50px; color: white;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    <i onclick="changeColor('gray')" style="font-size: 50px; color: gray;" class="fa-solid fa-spaghetti-monster-flying"></i>
+</section>
+
+<br>
+
+<section style="display: flex; justify-content: center;">
+    <canvas id="drawing" width="800" height="800" style="border: 20px groove gold; background-color: rgba(241, 244, 248, 0.342);"></canvas>
+</section>
+    
+<br>
+
+<section style="display: flex; justify-content: center;">
+    <div class="flex-container">
+        <i id="monsterNW" onclick="draw(-10,-10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterN" onclick="draw(0,-10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterNE" onclick="draw(10,-10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    </div>
+</section>
+<section style="display: flex; justify-content: center;">
+    <div class="flex-container">
+        <i id="monsterW" onclick="draw(-10,0)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterC" onclick="saySomething()" style="font-size: 50px; color: yellow;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterE" onclick="draw(10,0)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    </div>
+</section>
+<section style="display: flex; justify-content: center;">
+    <div class="flex-container">
+        <i id="monsterSW" onclick="draw(-10,10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterS" onclick="draw(0,10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+        <i id="monsterSE" onclick="draw(10,10)" style="font-size: 50px;" class="fa-solid fa-spaghetti-monster-flying"></i>
+    </div>
+</section>
+
+</body>
+
+<script>
+    const canvas = document.getElementById("drawing");
+    const ctx = canvas.getContext("2d");
+    let x = 400;
+    let y = 400;
+    let color = "yellow";
+
+    function draw(distX,distY) {        
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+        updatePosition(distX,distY)
+        ctx.lineTo(x,y);
+        ctx.stroke();
+    }
+
+    function changeColor(newColor) {
+        color = newColor;
+        monsterC.style.color = color;
+    }
+
+
+    function updatePosition(distX,distY) {
+        if(x+distX>0 && x+distX<800) {
+            x += distX;
+        }
+        if(y+distY>0 && y+distY<800) {
+            y += distY;
+        }
+    }
+
+    function saySomething() {
+        alert('Click on black monsters to draw and colored monsters to change color');
+    }
+</script>
+
+</html>
